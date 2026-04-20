@@ -1,89 +1,75 @@
-SGA Portal - README
+# SGA Portal - Smart Guide & Academic Project Portal
 
-Project Title
+SGA Portal is a modern academic portal created for students, administrators, and visitors. It provides an easy way to manage student projects, track progress, view assigned guides, and explore project ideas.
 
-SGA Portal - Smart Guide & Academic Portal
-
-
----
-
-Project Overview
-
-SGA Portal is a modern academic web portal designed for students, administrators, and visitors. It provides a clean interface for tracking student project progress, viewing assigned guides, exploring technical project domains, and managing academic records.
-
-The portal supports three user roles:
-
-Admin
-
-Student
-
-Visitor
-
-
-Each role gets a different interface and functionality.
-
+The project is built completely using frontend technologies and uses browser local storage to save student progress data.
 
 ---
 
-Features
+# Project Purpose
 
-Student Features
+The main purpose of this portal is to:
 
-Login using student ID format
-
-View project milestone progress
-
-Check assigned academic guide details
-
-Explore technical project domains
-
-Open project ideas and read project details
-
-Track project completion stages
-
-
-Admin Features
-
-Login with admin credentials
-
-View all student records
-
-Update project milestone checkboxes
-
-Delete student records
-
-Manage student progress data stored in local storage
-
-
-Visitor Features
-
-Explore institutional showcase section
-
-View leadership information
-
-Access portal without student login
-
-
+- Help students track project progress
+- Help administrators manage project records
+- Allow visitors to explore institutional information
+- Provide project ideas from different technical domains
+- Demonstrate role-based access in a web application
 
 ---
 
-Technologies Used
+# User Roles
 
-HTML5
+There are 3 types of users in this portal:
 
-CSS3
+1. Admin
+2. Student
+3. Visitor
 
-JavaScript
-
-Local Storage API
-
-Google Fonts
-
-
+Each role gets a different dashboard and different features.
 
 ---
 
-Project Structure
+# Features
+
+## Student Features
+
+- Login using student ID
+- View project progress bar
+- Check milestone completion
+- View assigned guide details
+- Explore technical project categories
+- Open project ideas
+- Read project information
+- Access student workspace
+
+## Admin Features
+
+- Login using admin password
+- View all student records
+- Update project milestone checkboxes
+- Delete student records
+- Manage local storage data
+
+## Visitor Features
+
+- Enter as guest
+- View institutional showcase
+- See leadership details
+
+---
+
+# Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- Browser Local Storage
+- Google Fonts
+
+---
+
+# Project Files
 
 SGA-Portal/
 │
@@ -92,335 +78,241 @@ SGA-Portal/
 ├── script.js
 └── README.md
 
+---
+
+# index.html
+
+This file contains the complete structure of the website.
+
+Main sections included:
+
+- Header
+- Navigation buttons
+- Login modal
+- Student workspace
+- Guide section
+- Gallery section
+- Project details page
+- Visitor section
+- Admin dashboard
 
 ---
 
-File Explanation
+# style.css
 
-1. index.html
-
-This file contains the full structure of the portal.
+This file contains all the design and styling.
 
 It includes:
 
-Header and navigation bar
+- Theme colors
+- Buttons
+- Cards
+- Tables
+- Responsive layout
+- Animations
+- Progress bars
+- Toast messages
+- Grid layouts
+- Role-based color changes
 
-Login modal
+---
 
-Student workspace section
-
-Guide section
-
-Gallery section
-
-Project details section
-
-Visitor section
-
-Admin section
-
-
-2. style.css
-
-This file contains all the styling for the portal.
-
-It includes:
-
-Theme colors
-
-Layout styling
-
-Responsive grid system
-
-Buttons and cards
-
-Animations
-
-Tables
-
-Forms
-
-Toast notifications
-
-
-3. script.js
+# script.js
 
 This file contains all portal functionality.
 
 It handles:
 
-User login
-
-Role-based navigation
-
-Student progress tracking
-
-Guide assignment logic
-
-Category rendering
-
-Project detail rendering
-
-Admin table updates
-
-Local storage management
-
-Welcome notifications
-
-
+- Login system
+- Role validation
+- Student guide assignment
+- Dynamic category generation
+- Project detail generation
+- Navigation between pages
+- Admin data table rendering
+- Local storage saving
+- Welcome message display
 
 ---
 
-Login Credentials
+# Login Details
 
-Admin Login
+Admin Login:
 
 Role: admin
 Password: ACE
 
-Student Login Format
+Student Login Format:
 
 24AG1A05XX
 
-Example:
+Examples:
 
 24AG1A05A1
 24AG1A05B2
 24AG1A05C3
 
-Visitor Login
+Visitor Login:
 
-Visitors can enter any name or leave the field empty.
-
+Visitors can enter any name or continue as Guest.
 
 ---
 
-Student Workflow
+# Student Workflow
 
 1. Open the portal
-
-
-2. Click on "Sign In"
-
-
-3. Select "Student Account"
-
-
-4. Enter a valid student ID
-
-
-5. Access workspace
-
-
+2. Click on Sign In
+3. Select Student Account
+4. Enter valid student ID
+5. Open workspace
 6. View progress bar
-
-
-7. Open guide section
-
-
-8. Explore project domains
-
-
-9. View project details
-
-
-
+7. View guide information
+8. Explore technical domains
+9. Open project ideas
+10. Read project details
 
 ---
 
-Admin Workflow
+# Admin Workflow
 
 1. Open the portal
-
-
-2. Click on "Sign In"
-
-
-3. Select "Administration"
-
-
-4. Enter password "ACE"
-
-
+2. Click on Sign In
+3. Select Administration
+4. Enter password ACE
 5. Open database section
-
-
-6. View student records
-
-
+6. View all records
 7. Update milestone checkboxes
-
-
 8. Delete records if needed
 
+---
 
+# Visitor Workflow
 
+1. Open the portal
+2. Click on Sign In
+3. Select Visitor Access
+4. Enter any name or leave blank
+5. View showcase page
 
 ---
 
-Project Domains Available
+# Available Project Domains
 
-The portal currently includes the following technical domains:
+The portal contains project ideas in the following domains:
 
-Web Development
+- Web Development
+- Python Programming
+- Data Structures and Algorithms
+- Database Systems
+- Machine Learning
+- Artificial Intelligence
+- Internet of Things
+- Cyber Security
+- Mobile App Development
+- Software Engineering
 
-Python Programming
-
-Data Structures & Algorithms
-
-Database Systems
-
-Machine Learning
-
-Artificial Intelligence
-
-Internet of Things
-
-Cyber Security
-
-Mobile App Development
-
-Software Engineering
-
-
-Each domain contains multiple mini project ideas.
-
+Each domain contains multiple mini project ideas for students.
 
 ---
 
-Important Functions in script.js
+# Important JavaScript Functions
 
 toggleModal(show)
+- Opens or closes the login modal
 
-Shows or hides the login modal.
+toggleInputs()
+- Updates the login input field
 
 doLogin()
-
-Handles login logic for admin, student, and visitor.
+- Handles login for admin, student, and visitor
 
 renderCategories()
-
-Displays all technical project categories.
+- Displays all project domains
 
 openCategory(cat)
-
-Opens a selected technical domain.
+- Opens selected category
 
 showProjectDetails(projName)
-
-Displays full project information.
+- Shows detailed information about a selected project
 
 updateHeader(role)
-
-Changes navigation buttons based on user role.
+- Changes navigation buttons based on role
 
 navigateTo(page)
-
-Controls page switching.
+- Switches between different pages
 
 renderAdminTable()
+- Shows student records in table format
 
-Displays all stored student records.
+deleteRecord(id)
+- Deletes selected student record
+
+updateDB(id, idx)
+- Updates milestone checkboxes
 
 updateStudentUI()
-
-Updates the progress bar and milestone status.
+- Updates progress bar and project status
 
 showWelcome(name, role)
-
-Displays the welcome toast message.
-
+- Displays welcome toast notification
 
 ---
 
-Local Storage Usage
+# Local Storage Example
 
-The portal uses browser local storage to save student milestone data.
+The portal uses browser local storage to save data.
 
 Example:
 
 localStorage.setItem('sga_db', JSON.stringify(studentDB));
 
-This allows the portal to keep records even after the page reloads.
-
-
----
-
-UI Design Highlights
-
-Glassmorphism header
-
-Animated cards
-
-Smooth transitions
-
-Modern color themes
-
-Role-based color changes
-
-Responsive layout
-
-Progress tracking bar
-
-Toast notifications
-
-
+This helps keep records even after refreshing or reopening the browser.
 
 ---
 
-Future Improvements
+# UI Highlights
+
+- Modern header design
+- Glassmorphism effect
+- Smooth animations
+- Dynamic role-based colors
+- Progress bar tracking
+- Interactive cards
+- Clean tables
+- Responsive grid layout
+- Toast notifications
+
+---
+
+# Future Improvements
 
 Possible future upgrades:
 
-Database integration
-
-Backend authentication
-
-Real student records
-
-Project upload feature
-
-Faculty dashboard
-
-Search functionality
-
-Responsive mobile optimization
-
-Dark mode
-
-PDF report generation
-
-Notifications system
-
-
+- Database connection
+- Backend authentication
+- Faculty dashboard
+- Search bar
+- Dark mode
+- Mobile optimization
+- Project upload system
+- Notification system
+- Report generation
+- PDF export
 
 ---
 
-How to Run
+# How to Run
 
 1. Create a folder named SGA-Portal
-
-
-2. Add the following files:
-
-index.html
-
-style.css
-
-script.js
-
-
-
+2. Add these files:
+   - index.html
+   - style.css
+   - script.js
 3. Open index.html in a browser
-
-
 4. Start using the portal
-
-
-
 
 ---
 
-Conclusion
+# Conclusion
 
-SGA Portal is a simple but powerful academic portal project for students and institutions. It demonstrates role-based access, UI design, local storage handling, and project tracking features using only frontend technologies.
+SGA Portal is a simple and effective academic portal project. It demonstrates role-based login, local storage, student project tracking, dynamic rendering, and frontend design using HTML, CSS, and JavaScript.
