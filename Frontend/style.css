@@ -1,107 +1,82 @@
 :root {
-    --primary: #6366f1;
-    --accent: #f59e0b;
+    --primary: #6366f1; 
+    --accent: #f59e0b; 
     --bg: #fdfeff;
-    --glass: rgba(255, 255, 255, 0.8);
+    --glass: rgba(255, 255, 255, 0.8); 
     --text-main: #0f172a;
-    --text-dim: #475569;
+    --text-dim: #475569; 
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-body[data-role="admin"] {
-    --primary: #7c3aed;
-    --accent: #c026d3;
-}
+body[data-role="admin"] { --primary: #7c3aed; --accent: #c026d3; } 
+body[data-role="student"] { --primary: #e11d48; --accent: #10b981; } 
+body[data-role="visitor"] { --primary: #f59e0b; --accent: #6366f1; } 
 
-body[data-role="student"] {
-    --primary: #e11d48;
-    --accent: #10b981;
-}
-
-body[data-role="visitor"] {
-    --primary: #f59e0b;
-    --accent: #6366f1;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-body {
-    background-color: var(--bg);
-    color: var(--text-main);
-    transition: var(--transition);
-    overflow-x: hidden;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+body { background-color: var(--bg); color: var(--text-main); transition: var(--transition); overflow-x: hidden; }
 
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 80px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 6%;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: fixed; top: 0; width: 100%; height: 80px; background: var(--glass);
+    backdrop-filter: blur(12px); display: flex; justify-content: space-between;
+    align-items: center; padding: 0 6%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.logo {
-    font-weight: 800;
-    font-size: 1.6rem;
-    color: var(--primary);
-    cursor: pointer;
-    text-transform: uppercase;
+.logo { font-weight: 800; font-size: 1.6rem; color: var(--primary); cursor: pointer; text-transform: uppercase; }
+.nav-buttons { display: flex; gap: 10px; align-items: center; }
+
+button { padding: 12px 20px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-outline { background: transparent; border: 2.5px solid var(--primary); color: var(--primary); }
+.btn-danger { background: #fee2e2; color: #ef4444; padding: 8px 15px; font-size: 0.75rem; border-radius: 8px; }
+.btn-danger:hover { background: #ef4444; color: white; }
+
+#welcome-toast {
+    position: fixed; top: 100px; right: 30px; background: white; padding: 20px;
+    border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary); z-index: 3000; display: none;
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+section { min-height: 100vh; padding: 120px 8%; display: flex; flex-direction: column; animation: fadeIn 0.7s ease-out forwards; }
+.hidden { display: none !important; }
+
+#landing { text-align: center; justify-content: center; align-items: center; }
+#landing h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; letter-spacing: -2px; }
+
+.visitor-main-title { 
+    font-size: 4.5rem; font-weight: 800; text-align: center; margin-bottom: 40px; 
+    color: var(--text-main); text-shadow: 4px 4px 0px rgba(0,0,0,0.05), 8px 8px 15px rgba(0,0,0,0.1); 
 }
 
-button {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
+.card { background: white; padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: var(--transition); position: relative; overflow: hidden; cursor: pointer; }
+.card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+.card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+
+.badge { display: inline-block; padding: 6px 16px; background: rgba(0,0,0,0.05); color: var(--primary); border-radius: 30px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+
+.back-circle { 
+    width: 45px; height: 45px; border-radius: 50%; border: 2.5px solid var(--primary); 
+    display: flex; align-items: center; justify-content: center; 
+    margin-bottom: 20px; cursor: pointer; font-size: 1.2rem; color: var(--primary); 
     transition: var(--transition);
-    font-size: 0.9rem;
 }
+.back-circle:hover { background: var(--primary); color: white; transform: scale(1.1); }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
+.progress-container { background: #f1f5f9; height: 14px; border-radius: 10px; margin: 25px 0; overflow: hidden; }
+.progress-bar { background: var(--primary); height: 100%; width: 0%; transition: width 0.8s ease; }
+.phase-labels { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; }
 
-.btn-outline {
-    background: transparent;
-    border: 2.5px solid var(--primary);
-    color: var(--primary);
-}
+.admin-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.admin-table th { text-align: left; padding: 12px; border-bottom: 2px solid #eee; color: var(--primary); font-size: 0.8rem; }
+.admin-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
 
-.btn-danger {
-    background: #fee2e2;
-    color: #ef4444;
-    padding: 8px 15px;
-    font-size: 0.75rem;
-    border-radius: 8px;
-}
+#login-modal { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+.login-box { background: white; padding: 50px; border-radius: 32px; width: 95%; max-width: 450px; }
+input[type="password"], select { width: 100%; padding: 15px; margin: 12px 0; border: 2px solid #f1f5f9; border-radius: 14px; outline: none; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
 
-.btn-danger:hover {
-    background: #ef4444;
-    color: white;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* Continue pasting the remaining CSS from the <style> section exactly as it is */
+.detail-section { background: white; padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); text-align: left; }
+.detail-section h3 { color: var(--primary); margin: 25px 0 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+.detail-section p { color: var(--text-dim); line-height: 1.6; font-size: 1rem; }
