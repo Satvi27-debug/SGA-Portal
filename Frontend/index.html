@@ -20,14 +20,20 @@
     <header>
         <div class="logo" onclick="location.reload()">SGA Portal</div>
         <div id="nav-actions" class="nav-buttons">
-            <button class="btn-primary" onclick="toggleModal(true)">Sign In</button>
+            <button id="login-nav-btn" class="btn-primary" onclick="toggleModal(true)">Sign In</button>
         </div>
     </header>
+
+    <nav id="student-nav" class="hidden" style="position:fixed; top:80px; width:100%; background:white; z-index:999; display:flex; justify-content:center; gap:20px; padding:10px; border-bottom:1px solid #eee;">
+        <button class="btn-outline" onclick="navigateTo('workspace')">Dashboard</button>
+        <button class="btn-outline" onclick="navigateTo('guide')">My Guide</button>
+        <button class="btn-outline" onclick="navigateTo('gallery')">Projects Hub</button>
+    </nav>
 
     <div id="login-modal" class="hidden">
         <div class="login-box">
             <h2 style="text-align:center; margin-bottom:10px; font-weight:800;">Portal Login</h2>
-            <select id="role-select" onchange="toggleInputs()">
+            <select id="role-select">
                 <option value="admin">Administration</option>
                 <option value="student">Student Account</option>
                 <option value="visitor">Visitor Access</option>
@@ -44,35 +50,31 @@
         <div id="public-view">
             <section id="landing">
                 <h1>Smart Guide & <br><span style="color:var(--primary)">Academic Project</span> Portal</h1>
-                <p style="max-width:700px; margin: 20px auto 40px; color:var(--text-dim);">
-                    An institutional ecosystem for showcasing excellence and student mentorship.
-                </p>
+                <p style="max-width:700px; margin: 20px auto 40px; color:var(--text-dim);">An institutional ecosystem for showcasing excellence and student mentorship.</p>
                 <button id="main-get-started" class="btn-primary" style="padding:18px 45px;" onclick="toggleModal(true)">Explore Portal</button>
             </section>
         </div>
 
         <div id="student-view" class="hidden">
-            <section id="workspace-page" class="hidden">
+            <section id="workspace-page" class="view-section hidden">
                 <h2 style="text-align:center; margin-bottom:50px;">Student Workspace</h2>
                 <div style="display:flex; justify-content:center;">
                     <div class="card" style="max-width:750px; width:100%; cursor:default;">
                         <div class="badge">Milestone Tracker</div>
                         <h3>Project Status Bar</h3>
-                        <div class="progress-container">
-                            <div class="progress-bar" id="student-pb"></div>
-                        </div>
+                        <div class="progress-container"><div class="progress-bar" id="student-pb"></div></div>
                         <div class="phase-labels">
-                            <span>Topic Approval</span>
+                            <span>Topic</span>
                             <span>Abstract</span>
                             <span>Prototype</span>
-                            <span>Final Defense</span>
+                            <span>Defense</span>
                         </div>
                         <div id="student-status-text" style="margin-top:30px; padding:20px; background:#f8fafc; border-radius:15px; font-size:0.9rem;"></div>
                     </div>
                 </div>
             </section>
 
-            <section id="guide-page" class="hidden">
+            <section id="guide-page" class="view-section hidden">
                 <h2 style="text-align:center; margin-bottom:50px;">Academic Guide</h2>
                 <div style="display:flex; justify-content:center;">
                     <div class="card" style="max-width:600px; width:100%; text-align:center; cursor:default;">
@@ -87,12 +89,12 @@
                 </div>
             </section>
 
-            <section id="gallery-hub" class="hidden">
+            <section id="gallery-hub" class="view-section hidden">
                 <h2 style="text-align:center; margin-bottom:50px;">Technical Domain Hub</h2>
                 <div id="category-grid" class="card-grid"></div>
             </section>
 
-            <section id="category-detail" class="hidden">
+            <section id="category-detail" class="view-section hidden">
                 <div style="text-align:left; max-width:1200px; margin:0 auto;">
                     <h2 id="cat-title" style="font-size: 2.5rem; margin-bottom: 5px;">Domain Title</h2>
                     <div class="back-circle" onclick="navigateTo('gallery')">←</div>
@@ -100,23 +102,22 @@
                 <div id="project-list" class="card-grid"></div>
             </section>
 
-            <section id="project-info-page" class="hidden">
+            <section id="project-info-page" class="view-section hidden">
                 <div style="text-align:left; max-width:900px; margin:0 auto; width:100%;">
                     <h2 id="info-project-title" style="font-size: 2.5rem; margin-bottom: 5px;">Project Name</h2>
                     <div class="back-circle" id="info-back-btn">←</div>
                     <div class="detail-section">
                         <div class="badge" id="info-badge">Project Overview</div>
                         <h3>Problem Statement</h3>
-                        <p id="info-problem"></p>
-
+                        <p id="info-problem">Loading...</p>
                         <h3>Abstract</h3>
-                        <p id="info-abstract"></p>
-
+                        <p id="info-abstract">Loading...</p>
                         <h3>Key Objectives</h3>
-                        <ul id="info-objectives"></ul>
-
-                        <h3>Project Overview</h3>
-                        <p id="info-overview"></p>
+                        <ul id="info-objectives">
+                            <li>Design and implementation of core modules.</li>
+                            <li>Integration of user-friendly interface.</li>
+                            <li>Optimization for performance and scalability.</li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -125,9 +126,7 @@
         <div id="visitor-view" class="hidden">
             <section style="text-align:center;">
                 <h1 class="visitor-main-title">Institutional Showcase <br><span style="color:var(--primary)">& Legacy</span></h1>
-                <p style="color:var(--text-dim); max-width:800px; margin: 0 auto 40px;">
-                    Exploring the milestones and leadership of our institution.
-                </p>
+                <p style="color:var(--text-dim); max-width:800px; margin: 0 auto 40px;">Exploring the milestones and leadership of our institution.</p>
                 <div class="card" style="max-width:800px; margin: 0 auto; cursor:default;">
                     <div class="badge">Leadership</div>
                     <h3>Institutional Heads</h3>
@@ -141,16 +140,7 @@
                 <h2 style="text-align:center; margin-bottom:40px;">Master Database</h2>
                 <div class="card" style="overflow-x:auto; cursor:default;">
                     <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Student ID</th>
-                                <th>Topic</th>
-                                <th>Abstract</th>
-                                <th>Proto</th>
-                                <th>Final</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>Student ID</th><th>Topic</th><th>Abstract</th><th>Proto</th><th>Final</th><th>Action</th></tr></thead>
                         <tbody id="admin-logs-body"></tbody>
                     </table>
                 </div>
@@ -160,4 +150,4 @@
 
     <script src="script.js"></script>
 </body>
-  </html>
+</html>
